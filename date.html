@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Date Invite 🎬💜</title>
+    <link rel="stylesheet" href="date.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-container" id="starsContainer"></div>
+    <div class="web-bg"></div>
+    
+    <!-- Screen 1: Movie Invitation -->
+    <div class="screen" id="screen1">
+        <div class="content-wrapper">
+            <div class="floating-elements" id="floatingElements"></div>
+            
+            <div class="invitation-content">
+                <div class="movie-emoji animate-bounce">🎬</div>
+                <h1 class="title-large animate-fade-in">Hey Princess... 😌</h1>
+                
+                <p class="subtitle animate-fade-in" style="animation-delay: 0.3s;">
+                    I have a question for you...
+                </p>
+                
+                <div class="movie-prompt animate-fade-in" style="animation-delay: 0.6s;">
+                    <p class="movie-title">🕸️ Spider-Man: Beyond the Spider-Verse 🕸️</p>
+                    <p class="movie-desc">Brand new in cinemas. Epic action. Mind-bending story.</p>
+                    <p class="movie-question">Wanna watch it with me? 👉👈</p>
+                </div>
+                
+                <button class="btn-yes" id="yesBtn">
+                    <span>Yes! 😍</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Date Selection -->
+    <div class="screen hidden" id="screen2">
+        <div class="content-wrapper">
+            <div class="date-selection-container">
+                <h2 class="date-title animate-fade-in">Pick your date, Princess 👑</h2>
+                <p class="date-subtitle animate-fade-in" style="animation-delay: 0.2s;">Which day works for you?</p>
+                
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <span class="month-year">July/August 2026</span>
+                    </div>
+                    
+                    <div class="dates-grid">
+                        <div class="date-option" data-date="31" data-month="July">
+                            <div class="date-day">31</div>
+                            <div class="date-month">July</div>
+                            <div class="date-emoji">🕯️</div>
+                        </div>
+                        
+                        <div class="date-option" data-date="1" data-month="August">
+                            <div class="date-day">1</div>
+                            <div class="date-month">Aug</div>
+                            <div class="date-emoji">✨</div>
+                        </div>
+                        
+                        <div class="date-option" data-date="2" data-month="August">
+                            <div class="date-day">2</div>
+                            <div class="date-month">Aug</div>
+                            <div class="date-emoji">🌙</div>
+                        </div>
+                        
+                        <div class="date-option" data-date="3" data-month="August">
+                            <div class="date-day">3</div>
+                            <div class="date-month">Aug</div>
+                            <div class="date-emoji">💫</div>
+                        </div>
+                        
+                        <div class="date-option" data-date="4" data-month="August">
+                            <div class="date-day">4</div>
+                            <div class="date-month">Aug</div>
+                            <div class="date-emoji">⭐</div>
+                        </div>
+                        
+                        <div class="date-option" data-date="5" data-month="August">
+                            <div class="date-day">5</div>
+                            <div class="date-month">Aug</div>
+                            <div class="date-emoji">🎆</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="selected-date-display hidden" id="selectedDateDisplay">
+                    You picked: <span id="dateText"></span> 💜
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 3: Time Selection -->
+    <div class="screen hidden" id="screen3">
+        <div class="content-wrapper">
+            <div class="time-selection-container">
+                <h2 class="time-title animate-fade-in">What time, babe? 🕐</h2>
+                <p class="time-subtitle animate-fade-in" style="animation-delay: 0.2s;">Pick a showtime that works</p>
+                
+                <div class="times-grid">
+                    <button class="time-option" data-time="2:00 PM">
+                        <span class="time-text">2:00 PM</span>
+                        <span class="time-vibe">Afternoon vibes ☀️</span>
+                    </button>
+                    
+                    <button class="time-option" data-time="5:30 PM">
+                        <span class="time-text">5:30 PM</span>
+                        <span class="time-vibe">Evening chill 🌅</span>
+                    </button>
+                    
+                    <button class="time-option" data-time="8:00 PM">
+                        <span class="time-text">8:00 PM</span>
+                        <span class="time-vibe">Night romance 🌙</span>
+                    </button>
+                    
+                    <button class="time-option" data-time="10:30 PM">
+                        <span class="time-text">10:30 PM</span>
+                        <span class="time-vibe">Late night adventure 🌃</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 4: Snacks Selection -->
+    <div class="screen hidden" id="screen4">
+        <div class="content-wrapper">
+            <div class="snacks-container">
+                <h2 class="snacks-title animate-fade-in">Snacks? 🍿</h2>
+                <p class="snacks-subtitle animate-fade-in" style="animation-delay: 0.2s;">What's your poison?</p>
+                
+                <div class="snacks-grid">
+                    <button class="snack-option" data-snack="Popcorn">
+                        <span class="snack-emoji">🍿</span>
+                        <span class="snack-name">Classic Popcorn</span>
+                    </button>
+                    
+                    <button class="snack-option" data-snack="Nachos">
+                        <span class="snack-emoji">🧀</span>
+                        <span class="snack-name">Cheesy Nachos</span>
+                    </button>
+                    
+                    <button class="snack-option" data-snack="Candy">
+                        <span class="snack-emoji">🍬</span>
+                        <span class="snack-name">Candy Stash</span>
+                    </button>
+                    
+                    <button class="snack-option" data-snack="Hotdog">
+                        <span class="snack-emoji">🌭</span>
+                        <span class="snack-name">Hotdog & Drink</span>
+                    </button>
+                    
+                    <button class="snack-option" data-snack="Everything">
+                        <span class="snack-emoji">🎉</span>
+                        <span class="snack-name">The Whole Deal!</span>
+                    </button>
+                </div>
+                
+                <p class="snack-note">I'll pay for it all 😌💰</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 5: Confirmation -->
+    <div class="screen hidden" id="screen5">
+        <div class="content-wrapper">
+            <div class="confirmation-container">
+                <div class="confetti-container" id="confettiContainer"></div>
+                
+                <h1 class="confirmation-title animate-fade-in">She said YES! 🎊</h1>
+                
+                <div class="confirmation-details animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="detail-item">
+                        <span class="detail-label">Movie:</span>
+                        <span class="detail-value">🕸️ Spider-Man: Beyond the Spider-Verse</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Date:</span>
+                        <span class="detail-value" id="confirmDate"></span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Time:</span>
+                        <span class="detail-value" id="confirmTime"></span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Snacks:</span>
+                        <span class="detail-value" id="confirmSnacks"></span>
+                    </div>
+                </div>
+                
+                <p class="confirmation-message animate-fade-in" style="animation-delay: 0.6s;">
+                    This is gonna be the best date ever 💜✨
+                </p>
+                
+                <p class="confirmation-closing animate-fade-in" style="animation-delay: 0.9s;">
+                    Can't wait to see you, Princess 😙🫶🏾
+                </p>
+                
+                <div class="floating-hearts-final" id="finalHearts"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Declining message (Easter egg) -->
+    <div class="floating-message hidden" id="floatingMessage"></div>
+
+    <script src="date.js"></script>
+</body>
+</html>
