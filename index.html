@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Apology 💜</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-container" id="starsContainer"></div>
+    
+    <!-- Screen 1: Opening -->
+    <div class="screen" id="screen1">
+        <div class="content-wrapper">
+            <div class="floating-hearts" id="openingHearts"></div>
+            
+            <div class="opening-content">
+                <h1 class="title-large animate-fade-in">Hey, Princess 😙</h1>
+                
+                <p class="subtitle animate-fade-in" style="animation-delay: 0.3s;">
+                    I'd like to borrow about 3 minutes of your time.
+                </p>
+                
+                <div class="music-prompt animate-fade-in" style="animation-delay: 0.6s;">
+                    <p>✨ For the best experience, press play on your favorite Bryson Tiller song, then come back.</p>
+                </div>
+                
+                <button class="btn-glow" id="beginBtn" style="animation-delay: 0.9s;">
+                    <span class="btn-text">Begin</span>
+                    <span class="btn-glow-effect"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Security Check -->
+    <div class="screen hidden" id="screen2">
+        <div class="content-wrapper">
+            <div class="card-glass">
+                <h2 class="question">Are you actually Shirley?</h2>
+                
+                <div class="buttons-container">
+                    <button class="btn-secondary" data-answer="yes">Yes 😌</button>
+                    <button class="btn-secondary" data-answer="yes">Obviously 😌</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 3: Heart Charging Game -->
+    <div class="screen hidden" id="screen3">
+        <div class="content-wrapper">
+            <div class="game-container">
+                <h2 class="game-title">Prove it to me 💜</h2>
+                
+                <div class="heart-game">
+                    <div class="heart-container" id="heartContainer">
+                        <svg class="heart-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ff006e;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#8338ec;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M50,90 C20,70 5,55 5,40 C5,25 15,15 25,15 C35,15 45,25 50,35 C55,25 65,15 75,15 C85,15 95,25 95,40 C95,55 80,70 50,90 Z" 
+                                  fill="url(#heartGradient)" class="heart-path"/>
+                        </svg>
+                        
+                        <div class="progress-ring-container">
+                            <svg class="progress-ring" viewBox="0 0 100 100">
+                                <circle class="progress-ring-bg" cx="50" cy="50" r="45"/>
+                                <circle class="progress-ring-fill" cx="50" cy="50" r="45" 
+                                        style="stroke-dasharray: 283; stroke-dashoffset: 283;"/>
+                            </svg>
+                            <span class="progress-text" id="progressText">0%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="tap-instruction">Tap the heart to charge it ✨</p>
+                
+                <div class="particles-container" id="particlesContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 4: Question -->
+    <div class="screen hidden" id="screen4">
+        <div class="content-wrapper">
+            <div class="card-glass">
+                <h2 class="question">Who's been overthinking this way more than necessary?</h2>
+                
+                <div class="buttons-container">
+                    <button class="btn-secondary btn-runner" id="wrongBtn">Someone else</button>
+                    <button class="btn-secondary" id="correctBtn">Vick</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 5: Final Message -->
+    <div class="screen hidden" id="screen5">
+        <div class="content-wrapper">
+            <div class="final-message">
+                <div class="typewriter-content" id="typewriterContent"></div>
+                
+                <div class="confetti-container" id="confettiContainer"></div>
+                <div class="floating-hearts-final" id="finalHearts"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wrong Answer Messages -->
+    <div class="floating-message hidden" id="floatingMessage"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
