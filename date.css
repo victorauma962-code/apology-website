@@ -1,0 +1,406 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-pink: #ff006e;
+    --primary-purple: #8338ec;
+    --dark-bg: #0a0015;
+    --darker-bg: #050008;
+    --glass-light: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #d4d4d8;
+    --accent-glow: rgba(131, 56, 236, 0.4);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--darker-bg) 0%, #1a0033 50%, var(--dark-bg) 100%);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    position: relative;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.web-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(131, 56, 236, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+.screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    z-index: 3;
+}
+
+/* Screen 1: Invitation */
+.invitation-content {
+    text-align: center;
+    animation: slideUp 0.8s ease;
+}
+
+.movie-emoji {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.title-large {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.movie-prompt {
+    background: var(--glass-light);
+    border: 2px solid var(--primary-pink);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    backdrop-filter: blur(20px);
+    animation: slideUp 0.8s ease;
+}
+
+.movie-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.movie-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.movie-question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.btn-yes {
+    padding: 1.2rem 3.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: 2px solid var(--primary-pink);
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.3), rgba(131, 56, 236, 0.3));
+    color: var(--text-primary);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    animation: pulse 2s infinite;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-yes:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.5), rgba(131, 56, 236, 0.5));
+    box-shadow: 0 0 40px rgba(255, 0, 110, 0.8);
+    transform: translateY(-3px);
+}
+
+/* Screen 2: Date Selection */
+.date-selection-container {
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    backdrop-filter: blur(20px);
+    animation: slideUp 0.6s ease;
+}
+
+.date-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.date-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.calendar-container {
+    margin-bottom: 2rem;
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.dates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
+}
+
+.date-option {
+    background: rgba(255, 0, 110, 0.1);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    padding: 1.2rem 0.8rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: slideUp 0.6s ease;
+}
+
+.date-option:hover {
+    background: rgba(131, 56, 236, 0.2);
+    border-color: var(--primary-purple);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(131, 56, 236, 0.3);
+}
+
+.date-option.selected {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.4), rgba(131, 56, 236, 0.4));
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.6);
+}
+
+.date-day {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.date-month {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.date-emoji {
+    font-size: 1.5rem;
+}
+
+.selected-date-display {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--primary-pink);
+    margin-top: 2rem;
+    animation: slideUp 0.6s ease;
+}
+
+/* Screen 3: Time Selection */
+.time-selection-container {
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    backdrop-filter: blur(20px);
+    animation: slideUp 0.6s ease;
+    text-align: center;
+}
+
+.time-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.time-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.times-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.time-option {
+    background: rgba(255, 0, 110, 0.1);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+}
+
+.time-option:hover {
+    background: rgba(131, 56, 236, 0.2);
+    border-color: var(--primary-purple);
+    transform: translateY(-5px);
+}
+
+.time-option.selected {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.4), rgba(131, 56, 236, 0.4));
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.6);
+}
+
+.time-text {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.time-vibe {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Screen 4: Snacks */
+.snacks-container {
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    backdrop-filter: blur(20px);
+    animation: slideUp 0.6s ease;
+    text-align: center;
+}
+
+.snacks-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.snacks-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.snacks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.snack-option {
+    background: rgba(255, 0, 110, 0.1);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+}
+
+.snack-option:hover {
+    background: rgba(131, 56, 236, 0.2);
+    border-color: var(--primary-purple);
+    transform: translateY(-5px);
+}
+
+.snack-option.selected {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.4), rgba(131, 56, 236, 0.4));\n    border-color: var(--primary-pink);\n    box-shadow: 0 0 20px rgba(255, 0, 110, 0.6);\n}\n\n.snack-emoji {\n    font-size: 2rem;\n}\n\n.snack-name {\n    font-size: 0.9rem;\n    font-weight: 600;\n}\n\n.snack-note {\n    font-size: 1rem;\n    color: var(--text-secondary);\n    margin-top: 1rem;\n}\n\n/* Screen 5: Confirmation */\n.confirmation-container {\n    background: var(--glass-light);\n    border: 1px solid var(--glass-border);\n    border-radius: 24px;\n    padding: 3rem 2rem;\n    backdrop-filter: blur(20px);\n    animation: slideUp 0.6s ease;\n    text-align: center;\n    max-width: 600px;\n}\n\n.confirmation-title {\n    font-size: 2.5rem;\n    font-weight: 700;\n    margin-bottom: 2rem;\n    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    background-clip: text;\n}\n\n.confirmation-details {\n    background: rgba(131, 56, 236, 0.1);\n    border-left: 4px solid var(--primary-pink);\n    border-radius: 12px;\n    padding: 2rem;\n    margin-bottom: 2rem;\n    text-align: left;\n}\n\n.detail-item {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin: 1rem 0;\n    font-size: 1.1rem;\n}\n\n.detail-label {\n    font-weight: 600;\n    color: var(--primary-pink);\n}\n\n.detail-value {\n    color: var(--text-primary);\n    text-align: right;\n}\n\n.confirmation-message {\n    font-size: 1.3rem;\n    font-weight: 600;\n    color: var(--text-primary);\n    margin-bottom: 1rem;\n}\n\n.confirmation-closing {\n    font-size: 1.2rem;\n    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    background-clip: text;\n    font-weight: 700;\n}\n\n.floating-hearts-final {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    pointer-events: none;\n    z-index: 5;\n}\n\n.heart {\n    position: absolute;\n    font-size: 2rem;\n    opacity: 0.6;\n    animation: float 6s infinite;\n}\n\n@keyframes float {\n    0% {\n        transform: translateY(100vh) rotate(0deg);\n        opacity: 0;\n    }\n    10% {\n        opacity: 0.6;\n    }\n    90% {\n        opacity: 0.6;\n    }\n    100% {\n        transform: translateY(-100vh) rotate(360deg);\n        opacity: 0;\n    }\n}\n\n.confetti {\n    position: fixed;\n    pointer-events: none;\n    z-index: 8;\n    animation: confetti-fall 3s ease-in forwards;\n}\n\n@keyframes confetti-fall {\n    0% {\n        transform: translateY(-10px) rotate(0deg);\n        opacity: 1;\n    }\n    100% {\n        transform: translateY(100vh) rotate(720deg);\n        opacity: 0;\n    }\n}\n\n.floating-elements {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    pointer-events: none;\n    z-index: 3;\n}\n\n.floating-element {\n    position: absolute;\n    font-size: 2.5rem;\n    opacity: 0.4;\n    animation: float-element 8s infinite;\n}\n\n@keyframes float-element {\n    0%, 100% {\n        transform: translateY(0) translateX(0) rotate(0deg);\n    }\n    50% {\n        transform: translateY(-30px) translateX(20px) rotate(10deg);\n    }\n}\n\n/* Animations */\n@keyframes slideUp {\n    0% {\n        opacity: 0;\n        transform: translateY(30px);\n    }\n    100% {\n        opacity: 1;\n        transform: translateY(0);\n    }\n}\n\n@keyframes pulse {\n    0%, 100% { transform: scale(1); }\n    50% { transform: scale(1.08); }\n}\n\n@keyframes animate-fade-in {\n    0% { opacity: 0; }\n    100% { opacity: 1; }\n}\n\n@keyframes bounce {\n    0%, 100% { transform: translateY(0); }\n    50% { transform: translateY(-20px); }\n}\n\n.animate-fade-in {\n    animation: animate-fade-in 0.8s ease forwards;\n    opacity: 0;\n}\n\n.animate-bounce {\n    animation: bounce 2s infinite;\n}\n\n.hidden {\n    display: none !important;\n}\n\n/* Mobile Responsive */\n@media (max-width: 768px) {\n    .title-large { font-size: 2rem; }\n    .date-selection-container { padding: 2rem 1.5rem; }\n    .dates-grid { grid-template-columns: repeat(3, 1fr); }\n    .times-grid { grid-template-columns: repeat(2, 1fr); }\n    .snacks-grid { grid-template-columns: repeat(2, 1fr); }\n}\n\n@media (max-width: 480px) {\n    .title-large { font-size: 1.5rem; }\n    .movie-prompt { padding: 1.5rem; }\n    .date-selection-container { padding: 1.5rem 1.2rem; }\n    .confirmation-details { padding: 1.5rem; }\n    .detail-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }\n}\n
